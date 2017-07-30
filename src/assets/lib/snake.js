@@ -1,4 +1,4 @@
-		/**
+/**
  * Namespace
  */
 var Game      = Game      || {};
@@ -161,10 +161,10 @@ Game.Draw = function(context, snake) {
       var tail = {x: nx, y: ny};
       snake.stage.score++;
       // Calculate speed
-    if(snake.stage.score % 10 === 0) {
-      snake.stage.speed++;
-      snake.conf.fps -= 10;
-      }
+    // if(snake.stage.score % 10 === 0) {
+    //   snake.stage.speed++;
+    //   snake.conf.fps -= 10;
+    //   }
       snake.initFood();
     } else {
       var tail = snake.stage.length.pop();
@@ -184,7 +184,7 @@ Game.Draw = function(context, snake) {
     
     // Draw Score
     context.fillText('Score: ' + snake.stage.score, 5, (snake.stage.height - 5));
-    context.fillText('Speed: ' + snake.stage.speed, 50, (snake.stage.height - 5));
+    //context.fillText('Speed: ' + snake.stage.speed, 50, (snake.stage.height - 5));
   };
   
   // Draw Cell
@@ -215,6 +215,9 @@ Game.Snake = function(element, conf) {
   var snake    = new Component.Snake(canvas, conf);
   var gameDraw = new Game.Draw(context, snake);  
   // Game Interval
+  // var loop = function() {
+  //   window.setTimeout(loop, timing);
+  // }
   setInterval(function() {gameDraw.drawStage();}, snake.stage.conf.fps);
 };
 
